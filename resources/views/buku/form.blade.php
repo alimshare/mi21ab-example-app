@@ -1,15 +1,19 @@
-<form method="POST" action="/buku/tambah">
-    <h2>Tambah Buku</h2>
+@extends('template.layout')
 
-    @csrf
+@section('content')
+    <form method="POST" action="/buku/tambah">
+        <h2>Tambah Buku</h2>
 
-    Nama Buku
-    <input type="text" name="nama_buku" id="nama">
+        @csrf
 
-    <br><br>
+        Nama Buku
+        <input type="text" name="nama_buku" id="nama">
 
-    <button type="submit">Simpan</button>
-    <a href="/buku">Kembali</a>
+        <br><br>
 
-</form>
+        <button type="submit">Simpan</button>
+        <a href="/buku">Kembali</a>
+
+    </form>
+@endsection
 

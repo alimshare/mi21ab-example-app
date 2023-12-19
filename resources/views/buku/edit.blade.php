@@ -1,3 +1,6 @@
+@extends('template.layout')
+
+@section('content')
 <form method="POST" action="/buku/update">
     <h2>Edit Buku</h2>
 
@@ -13,4 +16,5 @@
     <a href="/buku">Kembali</a>
 
 </form>
+@endsection
 

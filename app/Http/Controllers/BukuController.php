@@ -12,18 +12,16 @@ class BukuController extends Controller
     
     function buku() {
         $buku       = Buku::all(); // select * from buku
-        $mahasiswa  = Mahasiswa::all(); // select * from mahasiswa
 
         $data['daftar_buku'] = $buku;
         $data['title']       = 'Buku';
-        $data['mahasiswa']   = $mahasiswa;
 
-        return view('buku', $data);
+        return view('buku.buku', $data);
     }
 
     function view($id) {
         $buku = Buku::find($id); // select * from buku where id = $id;
-        return view('buku-view', ['buku' => $buku]);
+        return view('buku.buku-view', ['buku' => $buku]);
     }
 
     function hapus($id) {
@@ -34,7 +32,7 @@ class BukuController extends Controller
         }
 
         $buku->delete();
-        echo "Berhasil dihapus. <a href='/buku'>Kembali</a>";
+        return redirect('/buku')->with('success', 'Berhasil dihapus');
     }
 
     function buku_echo() {
