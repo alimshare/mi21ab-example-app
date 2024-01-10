@@ -6,6 +6,7 @@ use App\Models\Buku;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class BukuController extends Controller
 {
@@ -26,9 +27,8 @@ class BukuController extends Controller
 
     function hapus($id) {
         $buku = Buku::find($id); // select * from buku where id = $id;
-        if (!$buku) {
-            echo "Buku tidak ada";
-            return;
+        if (!$buku) {            
+            return redirect('/buku')->with('danger', 'Buku tidak ditemukan');
         }
 
         $buku->delete();
@@ -51,11 +51,12 @@ class BukuController extends Controller
 
         if ($buku->save()) {
             echo "Berhasil simpan buku.";
+            Session::flash('success', 'Berhasil disimpan');
         } else {
-            echo "Gagal simpan buku";
+            Session::flash('success', 'Gagal disimpan');
         }
 
-        echo "<br><a href='/buku'>Kembali</a>";
+        return redirect('/buku');
     }
 
     function edit($id){
@@ -79,9 +80,9 @@ class BukuController extends Controller
 
         # Simpan Data dan Redirect
         if ($buku->save()) {
-            return redirect('/buku')->with('message', 'Berhasil disimpan'); # pindah ke halaman /buku : header('location:/buku')
+            return redirect('/buku')->with('success', 'Berhasil disimpan'); # pindah ke halaman /buku : header('location:/buku')
         } else {
-            return redirect('/buku')->with('message', 'Gagal disimpan');;
+            return redirect('/buku')->with('danger', 'Gagal disimpan');;
         }
     }
 

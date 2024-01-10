@@ -44,11 +44,12 @@
   <div class="row content">
     
     <div class="col-sm-3 sidenav">
-      <h4>Laravel</h4>
+      <h4>Perpustakaan Piksi</h4>
 
       <nav class="nav flex-column">
         <a class="nav-link active" aria-current="page" href="/">Home</a>
         <a class="nav-link" href="/buku">Buku</a>
+        <a class="nav-link" href="/mahasiswa">Mahasiswa</a>
       </nav>
 
     </div>

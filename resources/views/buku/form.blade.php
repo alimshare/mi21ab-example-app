@@ -11,8 +11,8 @@
 
         <br><br>
 
-        <button type="submit">Simpan</button>
-        <a href="/buku">Kembali</a>
+        <button type="submit" class="btn btn-primary">Simpan</button>
+        <a href="/buku" class="btn btn-light">Kembali</a>
 
     </form>
 @endsection

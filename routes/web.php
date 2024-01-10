@@ -3,6 +3,8 @@
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MahasiswaController;
+use App\Models\Mahasiswa;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +38,12 @@ Route::get('/buku/{id}/remove', [BukuController::class, 'hapus']);
 
 Route::get('/buku/{id}/edit',   [BukuController::class, 'edit']);
 Route::post('/buku/update',     [BukuController::class, 'update_buku']);
+
+Route::get('/mahasiswa',             [MahasiswaController::class, 'daftar_mahasiswa']);
+Route::get('/mahasiswa/tambah',      [MahasiswaController::class, 'tambah']);
+Route::post('/mahasiswa/simpan',     [MahasiswaController::class, 'simpan']);
+Route::get('/mahasiswa/{id}/remove', [MahasiswaController::class, 'hapus']);
+
+Route::get('/mahasiswa/{id}/edit',   [MahasiswaController::class, 'edit']);
+Route::post('/mahasiswa/update',     [MahasiswaController::class, 'update']);
+Route::get('/mahasiswa/{id}',        [MahasiswaController::class, 'view']);
