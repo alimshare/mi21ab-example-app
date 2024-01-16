@@ -3,6 +3,10 @@
 <div class="login-page">
   <div class="form">
 
+    @if(Session::has('danger'))
+      <p>{{ Session::get('danger') }}</p>
+    @endif
+
     <form class="login-form" method="POST" action="/postlogin">
 
         @csrf

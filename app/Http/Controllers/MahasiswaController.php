@@ -33,13 +33,13 @@ class MahasiswaController extends Controller
         try {
 
             if ($mahasiswa->save()) {
-                Session::flash('success', 'Berhasil simpan buku');
+                Session::flash('success', 'Berhasil simpan mahasiswa');
             } else {
-                Session::flash('danger', 'Gagal simpan buku');
+                Session::flash('danger', 'Gagal simpan mahasiswa');
             }
 
         } catch (Exception $e) {
-            Session::flash('danger', 'Gagal simpan buku');
+            Session::flash('danger', 'Gagal simpan mahasiswa');
         }
 
         return redirect('/mahasiswa');

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -16,12 +18,16 @@ class LoginController extends Controller
         $email      = $request->email;
         $password   = $request->password;
 
-        $user = User::where('email', $email)->where('password', $password)->first();
-        if ($user) {
-            echo "Login berhasil";
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            return redirect('/');
         } else {
-            echo "Username / Password salah";
-        }
+            return redirect('/login')->with('danger', 'Email / Password salah');
+        }   
+    }
+
+    function logout(Request $request) {
+        Auth::logout();
+        return redirect('login');
     }
 
 }
