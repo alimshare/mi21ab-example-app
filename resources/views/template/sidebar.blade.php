@@ -3,5 +3,6 @@
     <a class="nav-link" href="/buku">Buku</a>
     <a class="nav-link" href="/mahasiswa">Mahasiswa</a>
     <a class="nav-link" href="/user">User</a>
+    <a class="nav-link" href="/change-password">Ganti Password</a>
     <a class="nav-link" href="/logout">Logout</a>
 </nav>

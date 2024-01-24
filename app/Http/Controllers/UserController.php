@@ -50,4 +50,39 @@ class UserController extends Controller
         return redirect('/user');
     }
 
+    function resetPassword($id) {
+        // temukan User dengan ID yang dimaksud
+        $user = User::where('id', $id)->first();
+        if (!$user) {
+            return redirect('/user')->with('danger', 'User tidak ditemukan');
+        }
+
+        // Rubah password sesuai default password
+        $user->password = Hash::make("123456");
+        $user->save();
+
+        return redirect('/user')->with('success', 'Reset Password berhasil');
+
+    }
+
+    function changePassword(){
+        return view('change-password');
+    }
+
+    function postChangePassword(Request $request){
+        $user = $request->user(); // model dari user yang sedang login
+
+        # cek apakah password lama yang diinput cocok dengan yang di database
+        if (!Hash::check($request->old_password, $user->password)) {
+            return redirect('/change-password')->with('danger', 'Password Lama tidak sesuai');
+        }
+
+        # ubah password
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        # kembali ke halaman sebelumnya
+        return redirect('/change-password')->with('success', 'Password berhasil diubah');
+    }
+
 }

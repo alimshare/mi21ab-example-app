@@ -52,11 +52,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/mahasiswa/{id}',        [MahasiswaController::class, 'view']);
     
     Route::prefix('/user')->group(function(){
-        
         Route::get('',          [UserController::class, 'index']);
         Route::get('/tambah',   [UserController::class, 'tambah']);
         Route::post('/simpan',  [UserController::class, 'simpan']);
-    
+        Route::get('/{id}/reset-password', [UserController::class, 'resetPassword']);
     });
+
+    Route::get('/change-password', [UserController::class, 'changePassword']);
+    Route::post('/change-password', [UserController::class, 'postChangePassword']);
 
 });

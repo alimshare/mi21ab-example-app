@@ -20,6 +20,7 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->name }}</td>
                     <td>
+                        <a href="/user/{{ $user->id }}/reset-password" class="btn btn-secondary" onclick="return konfirmasiResetPassword()">Reset Password</a>
                         {{-- <a href="/user/{{ $user->id }}" class="btn btn-default">Lihat</a> --}}
                         {{-- <a href="/user/{{ $user->id }}/edit" class="btn btn-success">Ubah</a> --}}
                         {{-- <a href="/user/{{ $user->id }}/remove" class="btn btn-danger">Hapus</a> --}}
@@ -28,5 +29,16 @@
             @endforeach
         </table>
     </div>
+
+    <script>
+        function konfirmasiResetPassword(){
+            var ok = confirm("Yakin ingin reset password ?");
+
+            if (ok) {
+                return true;
+            } 
+            return false;
+        }
+    </script>
 
 @endsection
